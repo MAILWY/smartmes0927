@@ -8,6 +8,7 @@ import java.util.List;
  * Created by wangjialin on 2017/9/17.
  */
 public class RetModel<T>{
+
     private String retCode;
     private String retMsg;
     private T retObj;
