@@ -14,4 +14,12 @@ public class MenuService {
     private Logger logger = LoggerFactory.getLogger(getClass());
     @Autowired
     private MenuRepository menuRepository;
+
+    public MenuRepository getMenuRepository() {
+        return menuRepository;
+    }
+
+    public void setMenuRepository(MenuRepository menuRepository) {
+        this.menuRepository = menuRepository;
+    }
 }

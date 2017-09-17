@@ -14,4 +14,13 @@ public class UserService {
     private Logger logger = LoggerFactory.getLogger(getClass());
     @Autowired
     private UserReposiotry userReposiotry;
+
+
+    public UserReposiotry getUserReposiotry() {
+        return userReposiotry;
+    }
+
+    public void setUserReposiotry(UserReposiotry userReposiotry) {
+        this.userReposiotry = userReposiotry;
+    }
 }
