@@ -7,12 +7,13 @@ import java.util.List;
 /**
  * Created by wangjialin on 2017/9/17.
  */
-public class RetModel<T>{
+public class RetModel<T> {
 
     private String retCode;
     private String retMsg;
     private T retObj;
     private List<T> retList;
+
     public RetModel() {
         this.setRetCode("000");
         this.setRetMsg("操作成功!");
@@ -21,6 +22,18 @@ public class RetModel<T>{
     public RetModel(String retCode, String retMsg) {
         this.retCode = retCode;
         this.retMsg = retMsg;
+    }
+
+    public RetModel success() {
+        this.setRetCode("000");
+        this.setRetMsg("操作成功!");
+        return this;
+    }
+
+    public RetModel fail(String retCode, String retMsg) {
+        this.setRetCode(retCode);
+        this.setRetMsg(retMsg);
+        return this;
     }
 
     public String getRetCode() {

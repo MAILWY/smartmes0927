@@ -15,7 +15,6 @@ public class UserService {
     @Autowired
     private UserReposiotry userReposiotry;
 
-
     public UserReposiotry getUserReposiotry() {
         return userReposiotry;
     }

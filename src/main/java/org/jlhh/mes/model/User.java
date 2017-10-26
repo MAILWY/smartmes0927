@@ -1,18 +1,15 @@
 package org.jlhh.mes.model;
 
-import org.springframework.jdbc.core.RowMapper;
-
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
 /**
  * Created by wangjialin on 2017/9/17.
+ * 用户表
  */
 public class User {
 
     private String userId;
-    private String userName;
     private String userPwd;
+    private String userName;
+    private String userFlag;
     private String userSex;
     private String userBirthday;
 
@@ -24,6 +21,14 @@ public class User {
         this.userId = userId;
     }
 
+    public String getUserPwd() {
+        return userPwd;
+    }
+
+    public void setUserPwd(String userPwd) {
+        this.userPwd = userPwd;
+    }
+
     public String getUserName() {
         return userName;
     }
@@ -32,12 +37,12 @@ public class User {
         this.userName = userName;
     }
 
-    public String getUserPwd() {
-        return userPwd;
+    public String getUserFlag() {
+        return userFlag;
     }
 
-    public void setUserPwd(String userPwd) {
-        this.userPwd = userPwd;
+    public void setUserFlag(String userFlag) {
+        this.userFlag = userFlag;
     }
 
     public String getUserSex() {
@@ -55,6 +60,4 @@ public class User {
     public void setUserBirthday(String userBirthday) {
         this.userBirthday = userBirthday;
     }
-
-
 }

@@ -1,26 +1,31 @@
 package org.jlhh.mes.model;
 
-import org.springframework.jdbc.core.RowMapper;
-
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
 /**
  * Created by wangjialin on 2017/9/17.
+ * 菜单表
  */
 public class Menu {
 
-    private int id;
+    private String menuid;
     private String menuName;
     private String menuResource;
     private String menuFlag;
+    private String dateTime;
 
-    public int getId() {
-        return id;
+    public String getDateTime() {
+        return dateTime;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setDateTime(String dateTime) {
+        this.dateTime = dateTime;
+    }
+
+    public String getMenuid() {
+        return menuid;
+    }
+
+    public void setMenuid(String menuid) {
+        this.menuid = menuid;
     }
 
     public String getMenuName() {
@@ -46,5 +51,4 @@ public class Menu {
     public void setMenuFlag(String menuFlag) {
         this.menuFlag = menuFlag;
     }
-
 }
