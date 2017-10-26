@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>缓存库看板</title>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/styletable.jquery.plugin.js"></script>
+    <script src="js/globalvar.js" type="text/javascript" charset="utf-8"></script>
+    <style>td {
+        text-align: center;
+        height: 45;
+    }</style>
+</head>
+<script language="JavaScript">
+    $(function () {
+        var List = '';
+        $.ajax({
+            type: "get",
+            url: "http://" + iPaddress + "/tsa/select",
+            async: true,
+            success: function (data) {
+                var List1 = '';
+                var List2 = '';
+                var List3 = '';
+                List1 = `<td align="center" height="50px"><img src="./pic/tsa/` + data[0].tsaUseflag + `.png"><br>第 ` + data[0].tsaId + ` 位<br/></td>`
+                    + `<td align="center" height="50px"><img src="./pic/tsa/` + data[1].tsaUseflag + `.png"><br>第 ` + data[1].tsaId + ` 位<br/></td>`
+                    + `<td align="center" height="50px"><img src="./pic/tsa/` + data[2].tsaUseflag + `.png"><br>第 ` + data[2].tsaId + ` 位<br/></td>`
+                    + `<td align="center" height="50px"><img src="./pic/tsa/` + data[3].tsaUseflag + `.png"><br>第 ` + data[3].tsaId + ` 位<br/></td>`
+                    + `<td align="center" height="50px"><img src="./pic/tsa/` + data[4].tsaUseflag + `.png"><br>第 ` + data[4].tsaId + ` 位<br/></td>`
+                    + `<td align="center" height="50px"><img src="./pic/tsa/` + data[5].tsaUseflag + `.png"><br>第 ` + data[5].tsaId + ` 位<br/></td>`
+                    + `<td align="center" height="50px"><img src="./pic/tsa/` + data[6].tsaUseflag + `.png"><br>第 ` + data[6].tsaId + ` 位<br/></td>`
+                    + `<td align="center" height="50px"><img src="./pic/tsa/` + data[7].tsaUseflag + `.png"><br>第 ` + data[7].tsaId + ` 位<br/></td>`
+                ;
+                $("#line1").html(List1);
+
+                List2 = `<td align="center" height="50px"><img src="./pic/tsa/` + data[8].tsaUseflag + `.png"><br>第 ` + data[8].tsaId + ` 位<br/></td>`
+                    + `<td align="center" height="50px"><img src="./pic/tsa/` + data[9].tsaUseflag + `.png"><br>第 ` + data[9].tsaId + ` 位<br/></td>`
+                    + `<td align="center" height="50px"><img src="./pic/tsa/` + data[10].tsaUseflag + `.png"><br>第 ` + data[10].tsaId + ` 位<br/></td>`
+                    + `<td align="center" height="50px"><img src="./pic/tsa/` + data[11].tsaUseflag + `.png"><br>第 ` + data[11].tsaId + ` 位<br/></td>`
+                    + `<td align="center" height="50px"><img src="./pic/tsa/` + data[12].tsaUseflag + `.png"><br>第 ` + data[12].tsaId + ` 位<br/></td>`
+                    + `<td align="center" height="50px"><img src="./pic/tsa/` + data[13].tsaUseflag + `.png"><br>第 ` + data[13].tsaId + ` 位<br/></td>`
+                    + `<td align="center" height="50px"><img src="./pic/tsa/` + data[14].tsaUseflag + `.png"><br>第 ` + data[14].tsaId + ` 位<br/></td>`
+                    + `<td align="center" height="50px"><img src="./pic/tsa/` + data[15].tsaUseflag + `.png"><br>第 ` + data[15].tsaId + ` 位<br/></td>`
+                ;
+                $("#line2").html(List2);
+                List3 = `<td align="center" height="50px"><img src="./pic/tsa/` + data[16].tsaUseflag + `.png"><br>第 ` + data[16].tsaId + ` 位<br/></td>`
+                    + `<td align="center" height="50px"><img src="./pic/tsa/` + data[17].tsaUseflag + `.png"><br>第 ` + data[17].tsaId + ` 位<br/></td>`
+                    + `<td align="center" height="50px"><img src="./pic/tsa/` + data[18].tsaUseflag + `.png"><br>第 ` + data[18].tsaId + ` 位<br/></td>`
+                    + `<td align="center" height="50px"><img src="./pic/tsa/` + data[19].tsaUseflag + `.png"><br>第 ` + data[19].tsaId + ` 位<br/></td>`
+                    + `<td align="center" height="50px"><img src="./pic/tsa/` + data[20].tsaUseflag + `.png"><br>第 ` + data[20].tsaId + ` 位<br/></td>`
+                    + `<td align="center" height="50px"><img src="./pic/tsa/` + data[21].tsaUseflag + `.png"><br>第 ` + data[21].tsaId + ` 位<br/></td>`
+                    + `<td align="center" height="50px"><img src="./pic/tsa/` + data[22].tsaUseflag + `.png"><br>第 ` + data[22].tsaId + ` 位<br/></td>`
+                    + `<td align="center" height="50px"><img src="./pic/tsa/` + data[23].tsaUseflag + `.png"><br>第 ` + data[23].tsaId + ` 位<br/></td>`
+                ;
+                $("#line3").html(List3);
+                $('table#table2').styleTable({
+                    th_bgcolor: '#3E83C9',
+                    th_color: '#ffffff',
+                    th_border_color: '#333333',
+                    tr_odd_bgcolor: '#ECF6FC',
+                    tr_even_bgcolor: '#ffffff',
+                    tr_border_color: '#95BCE2',
+                    tr_hover_bgcolor: '#BCD4EC'
+                });
+            }
+        });
+    })
+
+    function myrefresh() {
+        window.location.reload();
+    }
+
+    setTimeout('myrefresh()', 5000); //指定1秒刷新一次
+</script>
+<body>
+<table id="table2" border="0" cellpadding="4" cellspacing="0" align="center" width="100%">
+    <thead>
+    <th colspan="4" width="50%" height="60px" align="center"><B>尚立动力科技有限公司</B></th>
+    <th colspan="4" width="50%" height="60px" align="center"><B>缓存库看板</B></th>
+    </thead>
+    <tbody>
+    <tr id="line1">
+        <td align="center" height="50px"><img src="./pic/tsa/1.png"><br>第 三 行第 位<br/></td>
+    </tr>
+    <tr id="line2">
+        <td align="center" height="50px"><img src="./pic/tsa/1.png"><br>第 三 行第 位<br/></td>
+    </tr>
+    <tr id="line3">
+        <td align="center" height="50px"><img src="./pic/tsa/1.png"><br>第 三 行第 位<br/></td>
+    </tr>
+    </tbody>
+</table>
+<script type="text/javascript" src="js/shCore.js"></script>
+<script type="text/javascript" src="js/shBrushJScript.js"></script>
+<script type="text/javascript" src="js/shBrushXml.js"></script>
+<script type="text/javascript">
+    dp.SyntaxHighlighter.HighlightAll('code');
+</script>
+
+</body>
+</html>

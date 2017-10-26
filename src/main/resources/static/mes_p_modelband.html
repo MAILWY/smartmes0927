@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>模块箱体绑定</title>
+    <link rel="stylesheet" href="plugins/layui/css/layui.css" media="all"/>
+    <link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/global.css" media="all">
+    <script src="js/jquery-3.2.1.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/globalvar.js" type="text/javascript" charset="utf-8"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/styletable.jquery.plugin.js"></script>
+    <script src="js/globalvar.js" type="text/javascript" charset="utf-8"></script>
+    <style>td {
+        text-align: center;
+        height: 50px;
+        font-weight: bold;
+    }</style>
+</head>
+<!--<script language="JavaScript">
+        $(function(){
+            $('table#tableshow').styleTable({
+                th_bgcolor: '#3E83C9',
+                th_color: '#ffffff',
+                th_border_color: '#333333',
+                tr_odd_bgcolor: '#ECF6FC',
+                tr_even_bgcolor: '#ffffff',
+                tr_border_color: '#95BCE2',
+                tr_hover_bgcolor: '#BCD4EC'
+            });
+        })
+</script>-->
+
+<script type="text/javascript">
+    function modelin() {
+        var TabList = '';
+        document.getElementById('modelshow').value = document.getElementById('modelin').value;
+        document.getElementById('modelin').value = '';
+        $.ajax({
+            type: "get",
+            url: "http://" + iPaddress + "/modulegroup/selectbyid",
+            //模块条码mktl
+            data: {"moduleGroupId": document.getElementById('modelshow').value},
+            dataType: "json",
+            success: function (data) {
+                if (data.groupId !== null && data.groupId !== '') {
+                    TabList += `<tr>
+									<td>` + document.getElementById('modelshow').value + `</td>
+									<td class='groupId'>` + data.groupId + `</td>
+									<td>` + data.boxId + `</td>
+									<td>` + data.bmsId + `</td>
+								</tr>`;
+                    $("#list").append($(TabList));
+                }
+            }
+        });
+    }
+
+    function boxin() {
+        document.getElementById('boxinshow').value = document.getElementById('boxin').value;
+        document.getElementById('boxin').value = '';
+        var groupArr = [];
+        $.each($(".groupId"), function (index, val) {
+            groupArr.push($(val).text());
+        });
+        $.each(groupArr, function (index, val) {
+            $.ajax({
+                type: "post",
+                url: "http://" + iPaddress + "/modulegroup/updateBoxidByModuleid",
+                //模块条码mktl
+                data: {"BoxId": document.getElementById('boxinshow').value, "moduleGroupId": val},
+                dataType: "json",
+                success: function (data) {
+                }
+            });
+        });
+        setTimeout(function () {
+            var List = '';
+            $.ajax({
+                type: "post",
+                url: "http://" + iPaddress + "/modulegroup/selectByBoxid",
+                data: {"BoxId": document.getElementById('boxinshow').value},
+                dataType: "json",
+                success: function (data) {
+                    console.log(document.getElementById('boxinshow').value)
+                    console.log(data)
+                    $.each(data, function (index, val) {
+                        List += `<tr>
+										<td>` + val.moduleId1 + `</td>
+										<td class='groupId'>` + val.groupId + `</td>
+										<td>` + val.boxId + `</td>
+										<td>` + val.bmsId + `</td>
+								    	</tr>`;
+                        $("#list").html(List);
+                    });
+                }
+            });
+        }, 1000);
+
+    }
+
+
+    function bmsin() {
+        document.getElementById('bmsinshow').value = document.getElementById('bmsin').value;
+        document.getElementById('bmsin').value = '';
+        var groupArr = [];
+        $.each($(".groupId"), function (index, val) {
+            groupArr.push($(val).text());
+        });
+        $.each(groupArr, function (index, val) {
+            $.ajax({
+                type: "post",
+                url: "http://" + iPaddress + "/modulegroup/updateBmsidByModuleid",
+                //模块条码mktl
+                data: {"Bmsid": document.getElementById('bmsinshow').value, "moduleGroupId": val},
+                dataType: "json",
+                success: function (data) {
+                }
+            });
+        });
+
+        setTimeout(function () {
+            var List = '';
+            $.ajax({
+                type: "post",
+                url: "http://" + iPaddress + "/modulegroup/selectByBoxidBmsid",
+                data: {
+                    "BoxId": document.getElementById('boxinshow').value,
+                    "BmsId": document.getElementById('bmsinshow').value
+                },
+                dataType: "json",
+                success: function (data) {
+                    $.each(data, function (index, val) {
+                        List += `<tr>
+										<td>` + val.moduleId1 + `</td>
+										<td class='groupId'>` + val.groupId + `</td>
+										<td>` + val.boxId + `</td>
+										<td>` + val.bmsId + `</td>
+								    	</tr>`;
+                        $("#list").html(List);
+                    });
+                }
+            });
+        }, 1000);
+    }
+</script>
+<body>
+<input type="text" id="modelin" onkeydown="if(event.keyCode==13) {modelin()}" style="width:300px;height=20px;"
+       lay-verify="title" autocomplete="off" placeholder="扫码枪录入模块条码" class="layui-input">
+<input type="text" id="modelshow" style="border-style:none;width:300px;height=20px;" readonly="readonly"/>
+<input type="text" id="boxin" onkeydown="if(event.keyCode==13) {boxin()}" style="width:300px;height=20px;"
+       lay-verify="title" autocomplete="off" placeholder="扫码枪录入箱体条码" class="layui-input">
+<input type="text" id="boxinshow" style="border-style:none;width:300px;height=20px;" readonly="readonly"/>
+<input type="text" id="bmsin" onkeydown="if(event.keyCode==13) {bmsin()}" style="width:300px;height=20px;"
+       lay-verify="title" autocomplete="off" placeholder="扫码枪录入BMS条码" class="layui-input">
+<input type="text" id="bmsinshow" style="border-style:none;width:300px;height=20px;" readonly="readonly"/>
+
+<table id="tableshow" border="0" cellpadding="4" cellspacing="0" align="center" width="100%">
+    <thead>
+    <th width="25%" height="60px" align="center"><B>模块条码</B></th>
+    <th width="25%" height="60px" align="center"><B>模组条码</B></th>
+    <th width="25%" height="60px" align="center"><B>箱体条码</B></th>
+    <th width="25%" height="60px" align="center"><B>BMS 条码</B></th>
+    </thead>
+    <tbody id="list">
+    </tbody>
+    <script type="text/javascript">
+        $('table#tableshow').styleTable({
+            th_bgcolor: '#3E83C9',
+            th_color: '#ffffff',
+            th_border_color: '#333333',
+            tr_odd_bgcolor: '#ECF6FC',
+            tr_even_bgcolor: '#ffffff',
+            tr_border_color: '#95BCE2',
+            tr_hover_bgcolor: '#BCD4EC'
+        });
+    </script>
+</table>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>产品测试报表</title>
+    <link rel="stylesheet" href="plugins/layui/css/layui.css" media="all"/>
+    <link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/global.css" media="all">
+    <script src="js/jquery-3.2.1.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/globalvar.js" type="text/javascript" charset="utf-8"></script>
+    <style>
+        #head {
+            width: 100%;
+            overflow: hidden;
+        }
+
+        #head > div {
+            width: 30%;
+            float: left;
+            padding: 14px;
+        }
+
+        #head > div:nth-child(1) div {
+            margin: 14px 0;
+        }
+
+        #head > div:nth-child(2) {
+            width: 35%;
+            margin-top: 14px;
+        }
+
+        #add {
+            margin: 14px;
+        }
+    </style>
+    <script type="text/javascript">
+        $(function () {
+            $("#add").click(function () {
+                var value = $("#prodtest").val();
+                var URL = "http://" + iPaddress + "/mesprodtest/select?prodNum=" + value;
+                window.open(URL);  //开一个新的页面
+                //window.location.href=URL;
+            })
+        })
+    </script>
+</head>
+<body>
+<div style="margin: 15px;">
+    <div id="head">
+        <div class="layui-input-block">
+            <input type="text" id="prodtest" lay-verify="title" autocomplete="off" placeholder="输入箱体条码"
+                   class="layui-input">
+        </div>
+        <button class="layui-btn layui-btn-normal" id="add">确定</button>
+    </div>
+</body>
+</html>

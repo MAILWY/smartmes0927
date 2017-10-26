@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>用户新增</title>
+    <link rel="stylesheet" href="plugins/layui/css/layui.css" media="all"/>
+    <link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/global.css" media="all">
+    <script src="js/jquery-3.2.1.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/globalvar.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/add.js"></script>
+    <style>
+        #head {
+            width: 100%;
+            overflow: hidden;
+        }
+
+        #head > div {
+            width: 30%;
+            float: left;
+            padding: 14px;
+        }
+
+        #head > div:nth-child(1) div {
+            margin: 14px 0;
+        }
+
+        #head > div:nth-child(2) {
+            width: 35%;
+            margin-top: 14px;
+        }
+
+        #add {
+            margin: 14px;
+        }
+    </style>
+</head>
+<body>
+<div style="margin: 15px;">
+
+    <div id="head">
+        <div>
+            <div class="layui-input-block">
+                <input type="text" id="userId" lay-verify="title" autocomplete="off" placeholder="用户名"
+                       class="layui-input">
+            </div>
+        </div>
+
+        <div>
+            <label class="layui-form-label">姓名</label>
+            <div class="layui-input-block">
+                <input type="text" id="name" lay-verify="title" autocomplete="off" placeholder="姓名" class="layui-input">
+            </div>
+        </div>
+    </div>
+
+    <button class="layui-btn layui-btn-normal" id="add">新增</button>
+
+    <div class="layui-field-box">
+        <table class="layui-table tr">
+            <thead>
+            <tr>
+                <th>用户编号</th>
+                <th>姓名</th>
+                <th style="width: 60px;">操作</th>
+            </tr>
+            </thead>
+            <tbody id="UserList">
+
+            </tbody>
+        </table>
+    </div>
+
+</div>
+</body>
+</html>

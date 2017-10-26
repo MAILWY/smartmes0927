@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>充放测试段看板</title>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/styletable.jquery.plugin.js"></script>
+    <script src="js/globalvar.js" type="text/javascript" charset="utf-8"></script>
+    <style>td {
+        text-align: center;
+        height: 45;
+    }</style>
+</head>
+<script language="JavaScript">
+    $(function () {
+        var List = '';
+        var Mach = ['', '一', '二', '三', '四', '五', '六'];
+        var Num = ['', '一', '二'];
+        $.ajax({
+            type: "get",
+            url: "http://" + iPaddress + "/meschargeinfo/select",
+            async: true,
+            success: function (data) {
+                $.each(data, function (index, val) {
+                    List += `<tr>
+							<td height="45px"><B>设备` + Mach[val.testMach] + `</B></td>
+							<td height="45px"><B>通道` + Num[val.channelNum] + `</B></td>
+							<td height="45px"><img src="./pic/charge/` + val.channelState + `.png" border="0"></td>
+						</tr>`;
+                });
+                $("#list").html(List);
+                $('table#table2').styleTable({
+                    th_bgcolor: '#3E83C9',
+                    th_color: '#ffffff',
+                    th_border_color: '#333333',
+                    tr_odd_bgcolor: '#ECF6FC',
+                    tr_even_bgcolor: '#ffffff',
+                    tr_border_color: '#95BCE2',
+                    tr_hover_bgcolor: '#BCD4EC'
+                });
+            }
+        });
+    })
+
+    function myrefresh() {
+        window.location.reload();
+    }
+
+    setTimeout('myrefresh()', 5000); //指定1秒刷新一次
+</script>
+<body>
+<table id="table2" border="0" cellpadding="4" cellspacing="0" align="center" width="100%">
+    <thead>
+    <th colspan="2" width="50%" height="60px" align="center"><B>尚立动力科技有限公司</B></th>
+    <th width="50%" height="60px" align="center"><B>充放测试段看板</B></th>
+    </thead>
+    <tbody id="list">
+    <!--<tr>
+        <td align="center" height="50px"><B>设备1</B></td>
+        <td align="center" height="50px"><B>通道一</B></td>
+        <td align="center" height="50px"><img src="./charge/1.png"></td>
+    </tr>-->
+    </tbody>
+</table>
+<script type="text/javascript" src="js/shCore.js"></script>
+<script type="text/javascript" src="js/shBrushJScript.js"></script>
+<script type="text/javascript" src="js/shBrushXml.js"></script>
+<script type="text/javascript">
+    dp.SyntaxHighlighter.HighlightAll('code');
+</script>
+
+</body>
+</html>
