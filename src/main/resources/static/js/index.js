@@ -10,9 +10,8 @@ $(function () {
     var TabList = '';
 
     var UserId = sessionStorage.getItem("UserId");
-
-    $("#header-user").html("用户：" + UserId);
-
+    var UserName = sessionStorage.getItem("UserName");
+    $("#header-user").html("用户：" + UserName + "	     " + "ID：" + UserId);
     $.ajax({
         type: "post",
         url: "http://" + iPaddress + "/usermenu/select",
@@ -78,5 +77,4 @@ $(function () {
             elem.msRequestFullscreen();
         }
     });
-
 })

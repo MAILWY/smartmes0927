@@ -10,7 +10,7 @@ $(function () {
         success: function (data) {
             $.each(data, function (index, val) {
                 userName += `<li>
-	         			<label for="spring"><input type="radio" name="user" id="` + val.userId + `"/>` + val.userName + `</label>
+	         			<label for="spring"><input type="radio" name="user" id="` + val.userId + `"/>` + val.userName + `:ID:` + val.userId + `</label>
 	   				</li>`;
             });
             $("#left").html(userName);

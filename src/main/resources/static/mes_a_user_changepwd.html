@@ -7,7 +7,14 @@
     <link rel="stylesheet" href="css/login.css"/>
     <script src="js/jquery-3.2.1.js" type="text/javascript" charset="utf-8"></script>
     <script src="js/globalvar.js" type="text/javascript" charset="utf-8"></script>
-    <script src="js/login.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
+        $(function () {
+            var UserId = sessionStorage.getItem("UserId");
+            var UserName = sessionStorage.getItem("UserName");
+            $("#userName1").val("用户：" + UserName + "      ID：" + UserId);
+//				console.log("placeholder","用户：" + UserName+"	     "+"ID：" + UserId)
+        })
+    </script>
 </head>
 <body class="beg-login-bg">
 <div class="beg-login-box">
@@ -20,7 +27,7 @@
                 <label class="beg-login-icon">
                     <i class="layui-icon">&#xe612;</i>
                 </label>
-                <input type="text" id="userName" lay-verify="userName" autocomplete="off" placeholder=""
+                <input type="text" id="userName1" lay-verify="userName"
                        readonly="readonly" class="layui-input">
             </div>
             <div class="layui-form-item">
@@ -49,9 +56,6 @@
             </div>
         </div>
     </div>
-    <footer>
-        <p>尚立MES</p>
-    </footer>
 </div>
 </body>
 </html>

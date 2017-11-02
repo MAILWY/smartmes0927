@@ -65,8 +65,12 @@ public class MuserController {
         if (loginuser.getUserId() == null) {
             return retModel.fail("999", "无此用户");
         }
+
         if (loginuser.getUserId().toString().equals(user.getUserId().toString()) && loginuser.getUserPwd().toString().equals(user.getUserPwd().toString())) {
-            return retModel.success();
+            System.out.println(loginuser.getUserName() + "--------");
+            retModel.setRetCode("000");
+            retModel.setRetMsg(loginuser.getUserName());
+            return retModel;
         } else return retModel.fail("999", "密码错误");
     }
 

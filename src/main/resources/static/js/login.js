@@ -10,6 +10,7 @@ $(function () {
             success: function (data) {
                 if (data.retCode == "000") {
                     sessionStorage.setItem('UserId', user);
+                    sessionStorage.setItem('UserName', data.retMsg);
                     location.href = 'mes_a_index.html';
                 }
                 else {
