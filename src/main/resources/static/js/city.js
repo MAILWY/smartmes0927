@@ -16,7 +16,7 @@ layui.define(['jquery'], function (exports) {
             } else {
                 parameter = parameter || {};
                 getApi = getApi || function () {
-                };
+                    };
             }
             var defaults = {
                 dataUrl: 'http://passer-by.com/data_location/list.json', //数据库地址

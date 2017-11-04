@@ -3,7 +3,7 @@
  * Javascript Compressor
  * http://www.crockford.com/
  * http://www.smallsharptools.com/
-*/
+ */
 
 dp.sh.Brushes.Xml = function () {
     this.CssClass = 'dp-xml';

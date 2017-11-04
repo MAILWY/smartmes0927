@@ -148,11 +148,11 @@ layui.define(['layer', 'laypage', 'icheck'], function (exports) {
     function loadData($tableBox, page) {
         //var that = '';
         /*$.ajax({
-            type: that.config.type,
-            success: function(result) {
+         type: that.config.type,
+         success: function(result) {
 
-            }
-        });*/
+         }
+         });*/
         laypage({
             cont: $tableBox.find('.beg-table-paged'),
             curr: page,

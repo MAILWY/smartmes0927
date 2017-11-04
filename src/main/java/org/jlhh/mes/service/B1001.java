@@ -8,9 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.net.Socket;
 import java.util.Map;
 
@@ -51,20 +49,34 @@ public class B1001 implements IBusiness {
         Socket socketSend = null;
 
         try {
-            System.out.println(socketB1001[0].toString());
             //ByteUtils.byteArrayToInt(socketB1001[1].getBytes())
-            socketSend = new Socket(socketB1001[0].toString(), Integer.parseInt(socketB1001[1]));
+            //socketSend = new Socket(socketB1001[0].toString(), Integer.parseInt(socketB1001[1]));
+            byte[] b = new byte[8];
+            b[0] = (byte) 0x01;
+            b[1] = (byte) 0x01;
+            b[2] = (byte) 0x00;
+            b[3] = (byte) 0x00;
+            b[4] = (byte) 0x00;
+            b[5] = (byte) 0x08;
+            b[6] = (byte) 0x3d;
+            b[7] = (byte) 0xcc;
+            socketSend = new Socket(socketB1001[0].toString(), 9009);
             System.out.println(socketSend.getPort());
             //读取服务器端数据
             DataInputStream input = new DataInputStream(socketSend.getInputStream());
             //向服务器端发送数据
-            DataOutputStream out = new DataOutputStream(socketSend.getOutputStream());
-            out.writeUTF(ByteUtils.encodeHex("3333333333"));
+            //DataOutputStream out = new DataOutputStream(socketSend.getOutputStream());
+            OutputStream out = socketSend.getOutputStream();
+            //out.print(queryDi);
+            out.write(b);
+            out.flush();
+            out.close();
+            //out.writeUTF(queryDi);
             System.out.println(" socketB1001发送回执报文地址端口:" + socketB1001[0] + ":" + socketB1001[1] + "--");
             out.close();
             input.close();
         } catch (Exception e) {
-            System.out.println(" socketB1001 客户端 finally 异常:" + socketB1001[0] + ":" + socketB1001[1] + "--" + e.getMessage());
+            System.out.println(" socketB1001 客户端 catch 异常:" + socketB1001[0] + ":" + socketB1001[1] + "--" + e.getMessage());
         } finally {
             if (socketSend != null) {
                 try {

@@ -1,1 +1,1 @@
-var iPaddress = '127.0.0.1:8001';
+var iPaddress = 'localhost:8001';

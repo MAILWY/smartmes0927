@@ -4,10 +4,10 @@ layui.define(['jquery'], function (exports) {
     (function (f) {
         function A(a, b, d) {
             var c = a[0], g = /er/.test(d) ? _indeterminate : /bl/.test(d) ? n : k, e = d == _update ? {
-                checked: c[k],
-                disabled: c[n],
-                indeterminate: "true" == a.attr(_indeterminate) || "false" == a.attr(_determinate)
-            } : c[g];
+                    checked: c[k],
+                    disabled: c[n],
+                    indeterminate: "true" == a.attr(_indeterminate) || "false" == a.attr(_determinate)
+                } : c[g];
             if (/^(ch|di|in)/.test(d) && !e) x(a, g); else if (/^(un|en|de)/.test(d) && e) q(a, g); else if (d == _update) for (var f in e) e[f] ? x(a, f, !0) : q(a, f, !0); else if (!b || "toggle" == d) {
                 if (!b) a[_callback]("ifClicked");
                 e ? c[_type] !== r && q(a, g) : x(a, g)
@@ -126,9 +126,9 @@ layui.define(['jquery'], function (exports) {
                         border: 0,
                         opacity: 0
                     }, g = _mobile ? {position: "absolute", visibility: "hidden"} : p ? d : {
-                        position: "absolute",
-                        opacity: 0
-                    }, l = "checkbox" == c[_type] ? e.checkboxClass || "icheckbox" : e.radioClass || "i" + r,
+                                position: "absolute",
+                                opacity: 0
+                            }, l = "checkbox" == c[_type] ? e.checkboxClass || "icheckbox" : e.radioClass || "i" + r,
                     z = f(_label + '[for="' + b + '"]').add(a.closest(_label)), u = !!e.aria,
                     y = m + "-" + Math.random().toString(36).substr(2, 6),
                     h = '<div class="' + l + '" ' + (u ? 'role="' + c[_type] + '" ' : "");

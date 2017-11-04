@@ -42,26 +42,26 @@ layui.config({
             //第一：在此页面通过ajax读取设置  举个栗子：
             //---------这是第一个栗子----------
             /*$.getJSON('/api/xxx',{moduleId:id},function(data){
-                navbar.set({
-                    elem: '#side',
-                    data: data
-                });
-                navbar.render();
-                navbar.on('click(side)', function(data) {
-                    tab.tabAdd(data.field);
-                });
-            });*/
+             navbar.set({
+             elem: '#side',
+             data: data
+             });
+             navbar.render();
+             navbar.on('click(side)', function(data) {
+             tab.tabAdd(data.field);
+             });
+             });*/
             //------------栗子结束--------------
             //第二：设置url
             //---------这是第二个栗子----------
             /*navbar.set({
-                elem: '#side',
-                url: '/api/xxx?moduleId='+id
-            });
-            navbar.render();
-            navbar.on('click(side)', function(data) {
-                tab.tabAdd(data.field);
-            });*/
+             elem: '#side',
+             url: '/api/xxx?moduleId='+id
+             });
+             navbar.render();
+             navbar.on('click(side)', function(data) {
+             tab.tabAdd(data.field);
+             });*/
             //------------栗子结束--------------
 
             //设置navbar
