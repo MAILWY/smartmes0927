@@ -14,7 +14,10 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+
+import static org.jlhh.mes.utils.ByteUtils.getBooleanArray;
 
 /**
  * Created by wangyong on 2017/9/27.
@@ -31,32 +34,49 @@ public class TsaController {
         List<Tsa> TsaList = new ArrayList<Tsa>();
         try {
             //卓岚6842模块DI1-DI8的查询命令
-            byte[] Query = new byte[11];
+            byte[] Query = new byte[12];
             Query[0] = (byte) 0x00;
             Query[1] = (byte) 0x00;
             Query[2] = (byte) 0x00;
             Query[3] = (byte) 0x00;
-            Query[4] = (byte) 0x06;
-            Query[5] = (byte) 0x01;
+            Query[4] = (byte) 0x00;
+            Query[5] = (byte) 0x06;
             Query[6] = (byte) 0x01;
-            Query[7] = (byte) 0x00;
+            Query[7] = (byte) 0x01;
             Query[8] = (byte) 0x00;
             Query[9] = (byte) 0x00;
-            Query[10] = (byte) 0x08;
+            Query[10] = (byte) 0x00;
+            Query[11] = (byte) 0x08;
+
             //每次查询时，查询上位机的状态，10秒实时更新一次。
             Socket socketTsaLtk00 = null;
             socketTsaLtk00 = new Socket("192.168.1.210", 1092);
             //读取服务器端数据
-            DataInputStream input = new DataInputStream(socketTsaLtk00.getInputStream());
+            DataInputStream inputLtk00 = new DataInputStream(socketTsaLtk00.getInputStream());
             //向服务器端发送数据
-            DataOutputStream out = new DataOutputStream(socketTsaLtk00.getOutputStream());
-            out.write(Query);
-            byte[] ltkState = new byte[10];
-            input.read(ltkState);
-            //ltkState[9]&&10000000
-            System.out.println("-----TsaController------" + ltkState.toString());
-            out.close();
-            input.close();
+            DataOutputStream outLtk00 = new DataOutputStream(socketTsaLtk00.getOutputStream());
+            System.out.println("-----TsaController------192.168.1.210：1092--222--");
+            outLtk00.write(Query);
+            byte[] ltk00State = new byte[10];
+            inputLtk00.read(ltk00State);
+            System.out.println("-----TsaController------192.168.1.210：1092----" + Arrays.toString(getBooleanArray(ltk00State[9])));
+            outLtk00.close();
+            inputLtk00.close();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
             TsaList = this.tsaService.getTsaRepository().selectAll();

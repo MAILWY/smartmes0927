@@ -220,7 +220,7 @@ public class ByteUtils {
     }
 
     /**
-     * 将byte转换为一个长度为8的byte数组，数组每个值代表bit
+     * 将byte转换为一个长度为8的boolean数组数组，数组每个值代表bit
      */
     public static byte[] getBooleanArray(byte b) {
         byte[] array = new byte[8];
