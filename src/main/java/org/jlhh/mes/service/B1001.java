@@ -51,15 +51,7 @@ public class B1001 implements IBusiness {
         try {
             //ByteUtils.byteArrayToInt(socketB1001[1].getBytes())
             //socketSend = new Socket(socketB1001[0].toString(), Integer.parseInt(socketB1001[1]));
-            byte[] b = new byte[8];
-            b[0] = (byte) 0x01;
-            b[1] = (byte) 0x01;
-            b[2] = (byte) 0x00;
-            b[3] = (byte) 0x00;
-            b[4] = (byte) 0x00;
-            b[5] = (byte) 0x08;
-            b[6] = (byte) 0x3d;
-            b[7] = (byte) 0xcc;
+
             socketSend = new Socket(socketB1001[0].toString(), 9009);
             System.out.println(socketSend.getPort());
             //读取服务器端数据
@@ -68,7 +60,7 @@ public class B1001 implements IBusiness {
             //DataOutputStream out = new DataOutputStream(socketSend.getOutputStream());
             OutputStream out = socketSend.getOutputStream();
             //out.print(queryDi);
-            out.write(b);
+            //out.write(b);
             out.flush();
             out.close();
             //out.writeUTF(queryDi);

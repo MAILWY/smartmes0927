@@ -27,8 +27,8 @@ public class SocketServerInitReadyEventListener implements ApplicationListener<A
             ServerSocket serverSocket = new ServerSocket(8005);
             String CurrTime = Time.getStringDate();
             while (true) {
-                System.out.println(CurrTime.toString() + "服务端口------8001");
-                System.out.println(CurrTime.toString() + "报文端口------8005");
+                System.out.println(CurrTime.toString() + "-------------服务端口------8001");
+                System.out.println(CurrTime.toString() + "-------------报文端口------8005");
                 Socket socket = serverSocket.accept();
                 socket.setKeepAlive(true);
                 socketServerHandler.setSocket(socket);
