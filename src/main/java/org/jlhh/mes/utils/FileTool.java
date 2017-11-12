@@ -14,8 +14,8 @@ public class FileTool {
     public static File createNewFile(String prodNum) {
         // 读取模板，并赋值到新文件************************************************************
         // 文件模板路径
-        File file = new File("E:\\mes_prod_test_excelTemplate.xlsx");
-        File newFile = new File("E:\\ProdTestResult" + prodNum.toString() + ".xlsx");
+        File file = new File("D:\\mes_prod_test_excelTemplate.xlsx");
+        File newFile = new File("D:\\ProdTestResult" + prodNum.toString() + ".xlsx");
         if (newFile.exists()) {
             newFile.delete();
         }

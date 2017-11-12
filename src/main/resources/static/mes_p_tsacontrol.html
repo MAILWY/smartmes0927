@@ -71,6 +71,14 @@
                         success: function (data) {
                         }
                     });
+                    $.ajax({
+                        type: "post",
+                        url: "http://" + iPaddress + "/tsa/update",
+                        async: true,
+                        data: {"tsaId": $(this).attr('id')},
+                        success: function (data) {
+                        }
+                    });
                 });
 
 

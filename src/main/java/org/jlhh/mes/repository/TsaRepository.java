@@ -11,6 +11,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
+import static org.jlhh.mes.utils.Time.getStringDate;
+
 /**
  * Created by wangyong on 2017/9/27.
  */
@@ -33,11 +35,25 @@ public class TsaRepository {
     }
 
     public Tsa updateTsa(Tsa tsa) {
-        String sql = "UPDATE  tsa  SET tsa_useflag=? WHERE tsa_id=? ";
+        System.out.println("1111111111111111");
+        String sql = "UPDATE  tsa  SET tsa_time = ? WHERE tsa_id=? ";
         this.jdbcTemplate.update(sql,
-                tsa.getTsaUseflag(),
+                getStringDate(),
                 tsa.getTsaId());
         return tsa;
+    }
+
+    public void updateTsaBool(int tsaId, boolean tsaState) {
+        String tsaUseflag = new String();
+        if (tsaState) {
+            tsaUseflag = "1";
+        } else {
+            tsaUseflag = "0";
+        }
+        String sql = " UPDATE  tsa  SET tsa_useflag=? WHERE tsa_id=? ";
+        this.jdbcTemplate.update(sql,
+                tsaUseflag,
+                tsaId);
     }
 
 

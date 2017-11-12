@@ -14,7 +14,7 @@ public class Time {
      */
     public static String getStringDateSSS() {
         Date currentTime = new Date();
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:sss");
         String dateString = formatter.format(currentTime);
         return dateString;
     }

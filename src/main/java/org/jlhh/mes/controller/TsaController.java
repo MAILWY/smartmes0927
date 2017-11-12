@@ -48,30 +48,28 @@ public class TsaController {
             Query[10] = (byte) 0x00;
             Query[11] = (byte) 0x08;
 
-            //每次查询时，查询上位机的状态，10秒实时更新一次。
-            Socket socketTsaLtk00 = null;
-            socketTsaLtk00 = new Socket("192.168.1.210", 1092);
-            //读取服务器端数据
-            DataInputStream inputLtk00 = new DataInputStream(socketTsaLtk00.getInputStream());
-            //向服务器端发送数据
-            DataOutputStream outLtk00 = new DataOutputStream(socketTsaLtk00.getOutputStream());
-            System.out.println("-----TsaController------192.168.1.210：1092--222--");
-            outLtk00.write(Query);
-            byte[] ltk00State = new byte[10];
-            inputLtk00.read(ltk00State);
-            System.out.println("-----TsaController------192.168.1.210：1092----" + Arrays.toString(getBooleanArray(ltk00State[9])));
-            outLtk00.close();
-            inputLtk00.close();
-
-
-
-
-
-
-
-
-
-
+//            //每次查询时，查询上位机的状态，10秒实时更新一次。
+//            Socket socketTsaLtk00 = null;
+//            socketTsaLtk00 = new Socket("192.168.1.210", 1092);
+//            //读取服务器端数据
+//            DataInputStream inputLtk00 = new DataInputStream(socketTsaLtk00.getInputStream());
+//            //向服务器端发送数据
+//            DataOutputStream outLtk00 = new DataOutputStream(socketTsaLtk00.getOutputStream());
+//            System.out.println("-----TsaController------192.168.1.210：1092--222--");
+//            outLtk00.write(Query);
+//            byte[] ltk00State = new byte[10];
+//            inputLtk00.read(ltk00State);
+//            System.out.println("-----TsaController------192.168.1.210：1092----" );
+//            outLtk00.close();
+//            inputLtk00.close();
+//            tsaService.getTsaRepository().updateTsaBool( 10,getBooleanArray(ltk00State[9])[0]);
+//            tsaService.getTsaRepository().updateTsaBool( 1,getBooleanArray(ltk00State[9])[1]);
+//            tsaService.getTsaRepository().updateTsaBool( 4,getBooleanArray(ltk00State[9])[2]);
+//            tsaService.getTsaRepository().updateTsaBool( 17,getBooleanArray(ltk00State[9])[3]);
+//            tsaService.getTsaRepository().updateTsaBool( 18,getBooleanArray(ltk00State[9])[4]);
+//            tsaService.getTsaRepository().updateTsaBool( 9,getBooleanArray(ltk00State[9])[5]);
+//            tsaService.getTsaRepository().updateTsaBool( 2,getBooleanArray(ltk00State[9])[6]);
+//            tsaService.getTsaRepository().updateTsaBool( 3,getBooleanArray(ltk00State[9])[7]);
 
 
 
@@ -81,7 +79,6 @@ public class TsaController {
 
             TsaList = this.tsaService.getTsaRepository().selectAll();
             logger.trace("用户表记录" + TsaList.size());
-
         } catch (Exception ex) {
             ex.printStackTrace();
             retModel.fail("009", "操作异常,详细错误信息请查看控制台日志!");
@@ -94,7 +91,6 @@ public class TsaController {
     public Object updateTsa(Tsa tsa) {
         RetModel retModel = new RetModel();
         try {
-            System.out.println(tsa.getTsaId().toString() + "-----------" + tsa.getTsaUseflag().toString());
             this.tsaService.getTsaRepository().updateTsa(tsa);
             retModel.success().setRetObj(tsa);
         } catch (Exception ex) {
@@ -104,6 +100,5 @@ public class TsaController {
         logger.trace("/tsa/update begining......");
         return retModel;
     }
-
 }
 
